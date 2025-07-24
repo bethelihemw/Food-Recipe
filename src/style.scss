@@ -1,0 +1,437 @@
+:root { 
+  --background-color: white;
+  --background-light: white;
+  --primary-color: #ff6347;
+  --secondary-color: #fff5f0;
+  --font-main: 'Poppins', sans-serif;
+  --border-radius: 12px;
+  --text-color: black;
+  --font-size: 16px;
+  --animation-speed: 1;
+  --shadow-color: black;
+}
+
+@function getAnimationDuration($duration: number){
+    @return calc(var(--animation-speed)* 0.35s) ease-in-out;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+body{
+    font-size: 16px;
+}
+a{
+    text-decoration: none;
+    margin-left: 12px;
+}
+.navbar{
+    height: 55px;
+    box-shadow: 0 1px 10px 1px rgb(163, 163, 163);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo{
+        font-size: 24px;
+        font-weight: bold;
+        color: blue;
+        padding: 0 15px;
+
+    }
+    .nav-links{
+        margin-left: 1em;
+        color: lightblue;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        position: relative;
+        &::before{
+            content: '';
+            display: inline-block;
+            height: 3px;
+            width: 100%;
+            background-color: blue;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transition: transform getAnimationDuration(.3);
+        }
+        &:hover{
+            &::before{
+                transform: scaleX(1);
+            }
+        }
+        &.active{
+            color: blue ;
+            font-weight: bold;
+        }
+
+    }
+    .sidebar{
+        height: 26px;
+        width: 30px;
+        display: none;
+        cursor: pointer;
+        position: relative;
+        .bar{
+            height: 5px;
+            width: 100%;
+            background-color: black;
+            border-radius: 5px;
+            transition: transform getAnimationDuration(.4);
+            position: absolute;
+            &:nth-child(1){
+                top: 0;
+            }
+            &:nth-child(2){
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            &:nth-child(3){
+                top: 100%;
+                transform: translateY(-100%);
+            }
+        }
+        &.active{
+            .bar{
+                transform-origin: center;
+                top: 50%;
+                &:nth-child(1){
+                    transform: translate(0,-50%) scale(1) rotate(45deg) ;
+                }
+                &:nth-child(2){
+                    transform: scaleX(0) translateY(-50%);
+                }
+                &:nth-child(3){
+                    transform: translate(0,-50%) scale(1) rotate(-45deg);
+                }
+            }
+        }
+    }
+}
+
+.contianer{
+    padding-inline: 15vw;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@media screen and (max-width: 768px){
+    .navbar{
+        .nav-links{
+            display: none;
+        }
+        .sidebar{
+            display: block;
+        }
+    }
+
+}
+
+@keyframes slideInLeft{
+    from{
+        transform: translateX(-100%);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+// SIDEBAR
+
+.sidemenu{
+    animation: getAnimationDuration(1s) slideInLeft;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    width: 250px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 0 2000px rgba(0,0,0,0.1), 2px 0 5px black;
+    .sidebar-link{
+        
+        display: block;
+        padding: .5em 1em ;
+        border-left: .4em solid transparent;
+        margin-bottom: 1em;
+        color: blue;
+        font-size: 1em;
+        transform: translateX(-100%);
+        animation: getAnimationDuration(.3s) slideInLeft forwards;
+        // @for $i from 1 through 3 {
+        //     // &:nth-child(#{$i}){
+        //     //     // animation-delay: #{$i + .1}s;
+        //     //     // animation: getAnimationDuration( $i);
+        //     // }
+        // }
+        &:hover{
+            border-left-color: blue;
+            background-color: rgba(0,0,0,0.1);
+            transition: 1.4s;
+        }
+        // &.active{
+        //     border-left-color: blue;
+        // }
+        svg{
+            width: 1em;
+            margin-right: 1.4em;
+
+        }
+
+    }
+}
+
+// SECTION ONE//
+.main{
+    padding-block: 3vw;
+    padding-left: 6vw;
+    padding-right: 6vw;
+}
+
+
+.section{
+    margin-bottom: 2em;
+    display: flex;
+    align-items: center;
+    .title{
+        color: black;
+        margin-bottom: .51em;
+        font-size: 2em;
+    }
+    .info{
+        color: rgb(58, 57, 57);
+        margin-bottom: .51em;
+        font-size: 1em;
+        letter-spacing: 1px;
+        line-height: 1.2;
+    }
+    .column1{
+        width: 50%;
+    }
+}
+
+.btn{ 
+    border-radius: .41em;
+    border: none;
+    outline: none;
+    background-color: blue;
+    color: white;
+    padding: .5em 1em;
+    // text-transform: uppercase;
+    font-size: 1em;
+    margin-top: 1em;
+    letter-spacing: 1px;
+    box-shadow: 0 3px 6px rgb(102, 102, 102);
+    cursor: pointer;
+    &:hover{
+        box-shadow: 0 3px 6px rgb(0, 0, 0);
+    }
+}
+.foodimage{
+    margin-left: 4vw;
+    // background-color: red;
+    height: 0;
+    width: 100%;
+    // padding-top: 100%;
+    border-radius: 1vw;
+    position: relative;
+    img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+}
+@keyframes popOut{
+    from{
+        transform: scale(0);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.section.main{
+    .gallary{
+        display: grid;
+        gap: 1.2vw;
+        grid-template-columns: repeat(3,1fr);
+        .foodimage{
+            border-radius: 6px;
+            overflow: hidden;
+            transform: scale(.1);
+            opacity: 0;
+            animation: getAnimationDuration(1s) popOut forwards;
+            &:nth-child(2){
+                animation-delay: .1s;
+            }
+            &:nth-child(3){
+                animation-delay: .2s;
+            }
+            &:nth-child(4){
+                animation-delay: .3s;
+            }
+            &:nth-child(5){
+                animation-delay: .4s;
+            }
+            &:nth-child(6){
+                animation-delay: .5s;
+            }
+            &:nth-child(7){
+                animation-delay: .6s;
+            }
+            &:nth-child(8){
+                animation-delay: .7s;
+            }
+            &:nth-child(9){
+                animation-delay: .8s;
+            }
+        }
+    }
+}
+
+// SECTION 2//
+
+
+
+@keyframes slideinright{
+    from{
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+.section.maintwo{
+    .column1.image{
+        img{
+            margin-left: 5.5em;
+            width: 220px;
+            height: 220px;
+            animation: getAnimationDuration(.15) popOut forwards;
+        }   
+    }
+    .column1.typo{
+        padding-left: 1em;
+        .skillitems{
+            border-left: .25em solid blue;
+            margin-bottom: .5em;
+            padding: .25em 10px .0125em;
+            color: rgb(58, 57, 57);
+            transform: translateX(100%);
+            opacity: 0;
+            animation: getAnimationDuration(.3s) slideinright forwards;
+            @for $i from 1 through 7{
+                &:nth-child(#{$i}){
+                    animation-delay: #{$i + .1s};
+                }
+            }
+        }
+        .btn{
+            margin-top: .31em;
+            font-size: 1em;
+        }
+
+    }
+}
+
+
+.section.quote{
+    display: block;
+    .text{
+        font-size: 1.2em;
+        line-height: 1.2;
+        color: rgb(3, 3, 3);
+    }
+    .author{
+        color: rgb(68, 67, 67);
+        text-align: right;
+        margin-top: 12px;
+    }
+}
+span{
+    color: red;
+    font-size: 3em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .sidemenu li:hover{
+//     background-color: rgb(217, 231, 231);
+//     transition: 1s;
+    
+// }
+// .sidemenu li{
+
+//     list-style: none;
+
+// }
