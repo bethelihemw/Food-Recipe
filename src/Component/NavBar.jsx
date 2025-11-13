@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import Sidebar from './Sidebar';
 import { faHome, faList , faCog } from "@fortawesome/free-solid-svg-icons"
-
+import {Link} from "react-router-dom"
 
 function NavBar(){
     const [sidebar, setSidebar] = useState(false)
@@ -11,10 +11,10 @@ function NavBar(){
     return(
         <>
             <div className="navbar contianer">
-                <a href="#" className="logo"> Food Palace</a>
+                <Link to="/" href="#" className="logo"> Food Palace</Link>
                 <div className="nav-links">
                     {links.map(link => (
-                        <a href="#!" key = {link.name}> {link.name}</a>
+                        <Link to = {link.path} key = {link.name}> {link.name}</Link>
                     ))}
                 </div>
                 <div onClick={()=> setSidebar(!sidebar)} className={ sidebar ? "sidebar active": "sidebar"}>
