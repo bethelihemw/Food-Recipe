@@ -3,7 +3,8 @@ import { faFacebook, faTwitter , faInstagram} from "@fortawesome/free-brands-svg
 
 function ChiefCard({chief}){
     return(
-        <div className="chief-card">
+        <div className="card-container">
+            <div className="chief-card">
             <img src={chief.img} alt="" />
             <div className="cardinfo">
                 <h3 className="chief-name">{chief.name}</h3>
@@ -16,6 +17,8 @@ function ChiefCard({chief}){
                 </p>
             </div>
         </div>
+        </div>
+        
     )
 }
 

@@ -38,7 +38,7 @@ function MainSection(){
             </div>
             <div className="colum1 gallary">
                 {images.map((src,index) => (
-                    <FoodImages key ={index}  imgsrc={src} pt = {"75%"}/>
+                    <FoodImages key ={index}  imgsrc={src} pt = {"99%"}/>
                 ))}
             </div>
         </div>

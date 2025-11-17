@@ -8,7 +8,7 @@
             </div>
             <div className="footer-section">
                 <p className="title">Contact us</p>
-                <p>+2519654343467</p>
+                <p>+251912345678</p>
                 <p>2025 Street NYC</p>
             </div>
             <div className="footer-section">
